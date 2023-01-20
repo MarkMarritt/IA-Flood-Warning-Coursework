@@ -10,7 +10,7 @@ def run():
 
     # Build list of stations
     stations = build_station_list()
-    # change made by me
+
     # Print number of stations
     print("Number of stations: {}".format(len(stations)))
 
