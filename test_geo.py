@@ -2,6 +2,7 @@
 
 from floodsystem.geo import havFormula, stations_by_distance
 from floodsystem.stationdata import build_station_list
+from testdata import data
 import pytest
 
 def test_create_havFormula():
@@ -22,7 +23,10 @@ def test_create_stationsbydistance():
             assert list[i][1] < list[i+1][1] or list[i][1] == list[i+1][1]
     else:
         pass
+    
+    assert list[0] == ('downing', 0.505594484133292)
+    assert list[-1] == ('oxford', 107.09794497503843)
 
 
-stations = build_station_list()
+stations = data
 p = (52.2053, 0.1218)
