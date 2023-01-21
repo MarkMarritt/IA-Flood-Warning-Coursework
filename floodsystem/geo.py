@@ -8,8 +8,6 @@ geographical data.
 import numpy as np
 from .utils import sorted_by_key  # noqa
 from .station import MonitoringStation
-from floodsystem.stationdata import build_station_list
-from floodsystem.utils import sorted_by_key
 
 def stations_by_distance(stations, p):
     """returns a list of tuples: (name of station, distance of station from point p)"""
