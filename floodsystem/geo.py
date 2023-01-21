@@ -82,3 +82,28 @@ def dataClean(stations):
     for i in stationRemovals:
             stations.remove(i)
     return stations
+
+
+def rivers_by_station_number(stations, N):
+    river_freq_dict={}
+    for station in stations:
+        if station.river in river_freq_dict:
+            river_freq_dict[station.river]+=1
+        else:
+            river_freq_dict[station.river]=1   #creates a dict of river names and the number they appear
+    
+    river_freq_tuples=[]
+    for item in river_freq_dict.items():
+        river_freq_tuples.append(item)      # converts the dict to a list of tuples
+    river_freq_sort=sorted_by_key(river_freq_tuples, 1, True)   # sorts the list of tuples (in reverse) by the built in util function
+    
+    river_freq_N=[]
+    count=0
+    for element in river_freq_sort: 
+        if count<N:
+            river_freq_N.append(element)  # adds first N tuples to the empty list
+        elif river_freq_sort[count][1]==river_freq_sort[N-1][1]:  #adds any more tuples that are monitored by the same number of stations
+            river_freq_N.append(element)
+        count+=1
+    
+    return(river_freq_N) 
