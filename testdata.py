@@ -1,3 +1,6 @@
+# use this data for your tests if you want
+# PLEASE CHANGE FLOW RATE AND URLS IF YOU NEED TO 
+
 from floodsystem.station import MonitoringStation
 
 

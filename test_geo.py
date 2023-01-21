@@ -1,10 +1,9 @@
 """unit test for geo submodule"""
 
-from floodsystem.geo import havFormula, stations_by_distance
-from floodsystem.stationdata import build_station_list
+from floodsystem.geo import havFormula, stations_by_distance, stations_within_radius
 from testdata import data
 import pytest
-
+# tests for task 1B
 def test_create_havFormula():
     p1 = (52.212835, 0.120872)
     p2 = (50.131125, -5.255319)
@@ -30,3 +29,16 @@ def test_create_stationsbydistance():
 
 stations = data
 p = (52.2053, 0.1218)
+
+# tests for task 1C
+badData = data
+badData.append("not a station")
+
+def test_create_stationsRadius():
+    assert stations_within_radius(data, p, 1000) == ['downing', 'trinity', 'churchill', 'Homerton', 'oxford']
+    assert stations_within_radius(data, p, 100) == ['downing', 'trinity', 'churchill', 'Homerton']
+    assert stations_within_radius(data, p, 1) == ['downing', 'trinity']
+    assert stations_within_radius(data, p, 0) == []
+    assert stations_within_radius(badData, p, 100) == ['downing', 'trinity', 'churchill', 'Homerton']
+
+test_create_stationsRadius()

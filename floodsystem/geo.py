@@ -7,7 +7,7 @@ geographical data.
 """
 import numpy as np
 from .utils import sorted_by_key  # noqa
-
+from .station import MonitoringStation
 
 def stations_by_distance(stations, p):
     """returns a list of tuples: (name of station, distance of station from point p)"""
@@ -51,9 +51,34 @@ def havFormula(point1, point2):
 
 def stationCoordinates(stations):
     """takes the stations and their coordinates as a dictionary"""
+    stations = dataClean(stations)
     stationCoords = {}
     for station in stations:
         stationCoords[station.name] = station.coord
     return stationCoords
 
 
+def stations_within_radius(stations, centre,r):
+    """returns a list of any stations within a radius r of a centre"""
+    stationsInR = []
+
+    stations = dataClean(stations)
+    
+    distancesFromCentre = stations_by_distance(stations, centre)
+    for j in distancesFromCentre:
+        if j[1] < r:
+            stationsInR.append(j[0])
+    
+    return stationsInR
+
+def dataClean(stations):
+    """removes any data types from a list that arent MonitoringStation"""
+    stationRemovals = [] # creating a list of stations to be removed from the "station" list, if they are not of the type "MonitoringStation"
+    for station in stations:
+        if isinstance(station, MonitoringStation):
+            pass
+        else:
+            stationRemovals.append(station)
+    for i in stationRemovals:
+            stations.remove(i)
+    return stations
