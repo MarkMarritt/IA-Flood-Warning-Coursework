@@ -46,7 +46,7 @@ place5 = MonitoringStation(
 "oxford",
 (51.751978, -1.257894),
 (0.1, 0.2),
-("Mississippi"),
+("Thames"),
 ("New York")
 )
 
