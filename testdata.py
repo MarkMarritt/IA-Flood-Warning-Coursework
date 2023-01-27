@@ -117,5 +117,6 @@ place12= MonitoringStation(
 ,(None)
 )
 
+
 data = [place1,place2,place3,place4,place5]
-dataDE=[place7,place8,place9,place10,place11,place12]
+dataDE=[place7,place8,place9,place10,place11,place12,place11,place10,place10]
