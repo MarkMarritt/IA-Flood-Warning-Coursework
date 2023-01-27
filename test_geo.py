@@ -1,7 +1,7 @@
 """unit test for geo submodule"""
 
-from floodsystem.geo import havFormula, stations_by_distance, stations_within_radius
-from testdata import data
+from floodsystem.geo import *
+from testdata import data, dataDE
 import pytest
 # tests for task 1B
 def test_create_havFormula():
@@ -41,4 +41,12 @@ def test_create_stationsRadius():
     assert stations_within_radius(data, p, 0) == []
     assert stations_within_radius(badData, p, 100) == ['downing', 'trinity', 'churchill', 'Homerton']
 
+#tests for task 1D
 
+def test_rivers_with_station():
+     assert rivers_with_station(dataDE)==['Amazon', 'Danube', 'Mississippi', 'Nile', 'Thames']
+def test_stations_by_river():
+    assert stations_by_river(dataDE)=={'Amazon': ['London'], 'Nile': ['Paris'], 'Thames': ['Berlin'], 'Danube': ['Rome'], 'Mississippi': ['New York']}
+
+
+#tests for task 1E

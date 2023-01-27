@@ -84,18 +84,38 @@ def dataClean(stations):
     return stations
 
 
-def rivers_by_station_number(stations, N):
-    river_freq_dict={}
+def rivers_with_station(stations):
+    station_rivers=[]
     for station in stations:
-        if station.river in river_freq_dict:
-            river_freq_dict[station.river]+=1
-        else:
-            river_freq_dict[station.river]=1   #creates a dict of river names and the number they appear
+        if station.town != None:
+            station_rivers.append(station.river)
+    station_rivers=list(set(station_rivers))
+    station_rivers.sort()
+    return(station_rivers)
+
+def stations_by_river(stations):
+    station_river_dict={}
+    for station in stations:
+        if station.town != None:
+            if station.river in station_river_dict:
+                station_river_dict[station.river].append(station.town)
+                station_river_dict[station.river].sort()
+            else:
+                station_river_dict[station.river]=[station.town] # list()==[] 
+    return(station_river_dict)
+
+def rivers_by_station_number(stations, N):
+    station_rivers=rivers_with_station(stations)
+    station_dict=stations_by_river(stations)
     
-    river_freq_tuples=[]
+    river_freq_dict={}
+    for river in station_rivers:
+        river_freq_dict[river]=len(station_dict[river])
+        
+    river_freq=[]
     for item in river_freq_dict.items():
-        river_freq_tuples.append(item)      # converts the dict to a list of tuples
-    river_freq_sort=sorted_by_key(river_freq_tuples, 1, True)   # sorts the list of tuples (in reverse) by the built in util function
+        river_freq.append(item)
+    river_freq_sort=sorted_by_key(river_freq, 1, True)
     
     river_freq_N=[]
     count=0
@@ -105,5 +125,5 @@ def rivers_by_station_number(stations, N):
         elif river_freq_sort[count][1]==river_freq_sort[N-1][1]:  #adds any more tuples that are monitored by the same number of stations
             river_freq_N.append(element)
         count+=1
-    
-    return(river_freq_N) 
+
+    return(river_freq_N)
