@@ -9,7 +9,7 @@ place1 = MonitoringStation(
 "https//thishyperlinkismadeupsodontuse1.com",
 "churchill",
 (52.213066207479, 0.10075146057338859),
-(0, 1),
+(1, 0),
 ("amazon"),
 ("London")
 )
@@ -36,7 +36,7 @@ place4 = MonitoringStation(
 "https//thishyperlinkismadeupsodontuse1.com",
 "downing",
 (52.201124, 0.124735),
-(0.3, 1.8),
+(3.0, 1.8),
 ("danube"),
 ("Rome")
 )
@@ -49,5 +49,15 @@ place5 = MonitoringStation(
 ("Thames"),
 ("New York")
 )
+place6 = MonitoringStation( 
+"https//thishyperlinkismadeupsodontuse.com",
+"https//thishyperlinkismadeupsodontuse1.com",
+"queens",
+(50.752988, 4.259894),
+(0.17, 0.02),
+("Cam"),
+("London")
+)
 
 data = [place1,place2,place3,place4,place5]
+data1F = [place1,place2,place3,place4,place5,place6]
