@@ -85,26 +85,47 @@ def dataClean(stations):
     return stations
 
 
-def rivers_by_station_number(stations, N):
-    river_freq_dict={}
+def rivers_with_station(stations):
+    station_rivers=[]           #
     for station in stations:
-        if station.river in river_freq_dict:
-            river_freq_dict[station.river]+=1
-        else:
-            river_freq_dict[station.river]=1   #creates a dict of river names and the number they appear
+        if station.town != None:
+            station_rivers.append(station.river) #adds river to the list if it has a monitoring station
+    station_rivers=list(set(station_rivers)) #makes it a set to get rid of duplicates and converts it back to a list so it can be sorted
+    station_rivers.sort()
+    return(station_rivers)
+
+def stations_by_river(stations):
+    station_river_dict={}
+    for station in stations:
+        if station.town != None:
+            if station.river in station_river_dict:                      
+                station_river_dict[station.river].append(station.town)  #if the river is in the dictionary it just adds the new town to the list it maps to 
+                station_river_dict[station.river].sort()
+            else:
+                station_river_dict[station.river]=[station.town] #if the river is not in the dictionary it adds it and maps it to a list containing its town
+    return(station_river_dict)   #this list can contain duplicates of towns, however this just shows that multiple monitoring stations within the same town
+                                 #monitor the river, and it is useful for task 1E
+
+def rivers_by_station_number(stations, N):
+    station_rivers=rivers_with_station(stations)
+    station_dict=stations_by_river(stations)
     
-    river_freq_tuples=[]
-    for item in river_freq_dict.items():
-        river_freq_tuples.append(item)      # converts the dict to a list of tuples
-    river_freq_sort=sorted_by_key(river_freq_tuples, 1, True)   # sorts the list of tuples (in reverse) by the built in util function
+    river_freq_dict={}
+    for river in station_rivers:
+        river_freq_dict[river]=len(station_dict[river]) #creates a dictionary mapping the rivers to the amount of stations that monitor them
+        
+    river_freq=list(river_freq_dict.items())   #converts the dictionary to a list of tuples so it can be sorted
+    river_freq_sort=sorted_by_key(river_freq, 1, True)  #using the sort function in utils, it sorts the list by the number of stations, from high to low
     
     river_freq_N=[]
     count=0
     for element in river_freq_sort: 
-        if count<N:
+        if N==0:                    #if the requested amount of rivers is 0 it should return an empty list
+            break
+        elif count<N:
             river_freq_N.append(element)  # adds first N tuples to the empty list
-        elif river_freq_sort[count][1]==river_freq_sort[N-1][1]:  #adds any more tuples that are monitored by the same number of stations
+        elif river_freq_sort[count][1]==river_freq_sort[N-1][1]:  #adds any more tuples that are monitored by the same number of stations as the Nth river
             river_freq_N.append(element)
         count+=1
-    
-    return(river_freq_N) 
+
+    return(river_freq_N)
