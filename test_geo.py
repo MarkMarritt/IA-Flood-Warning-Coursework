@@ -1,7 +1,7 @@
 """unit test for geo submodule"""
 
-from floodsystem.geo import *
-from testdata import data, dataDE
+from floodsystem.geo import havFormula, stations_by_distance, stations_within_radius, stations_by_river, rivers_by_station_number, rivers_with_station
+from testdata import data, data1F, dataDE
 import pytest
 # tests for task 1B
 def test_create_havFormula():
@@ -11,7 +11,6 @@ def test_create_havFormula():
     assert dis == 440.36063514421807
     with pytest.raises(ValueError):
         havFormula(("a","b"), ("c","d"))
-        pass
 
 
 def test_create_stationsbydistance():
