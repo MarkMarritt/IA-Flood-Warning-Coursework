@@ -15,16 +15,17 @@ def test_create_havFormula():
 
 
 def test_create_stationsbydistance():
-    list = stations_by_distance(stations,p)
-    if len(list) > 1:
-        assert list[0][1] < list[-1][1]
-        for i in range(len(list) - 1):
-            assert list[i][1] < list[i+1][1] or list[i][1] == list[i+1][1]
+    stlist = stations_by_distance(stations,p)
+    if len(stlist) > 1:
+        assert stlist[0][1] < stlist[-1][1]
+        for i in range(len(stlist) - 1):
+            assert stlist[i][1] < stlist[i+1][1] or stlist[i][1] == stlist[i+1][1]
     else:
         pass
     
-    assert list[0] == ('downing', 0.505594484133292)
-    assert list[-1] == ('oxford', 107.09794497503843)
+    assert stlist[0] == ('downing', 0.505594484133292)
+    assert stlist[-1] == ('oxford', 107.09794497503843)
+    assert isinstance(stlist, list)
 
 
 stations = data
@@ -40,6 +41,7 @@ def test_create_stationsRadius():
     assert stations_within_radius(data, p, 1) == ['downing', 'trinity']
     assert stations_within_radius(data, p, 0) == []
     assert stations_within_radius(badData, p, 100) == ['downing', 'trinity', 'churchill', 'Homerton']
+    
 
 #tests for task 1D
 

@@ -11,6 +11,7 @@ from .station import MonitoringStation
 
 def stations_by_distance(stations, p):
     """returns a list of tuples: (name of station, distance of station from point p)"""
+    dataClean(stations) # removes anything from the list that isn't a MonitoringStation
     if isinstance(p, tuple) and isinstance(stations, list):
         pass
     else:
