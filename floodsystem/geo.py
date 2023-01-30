@@ -119,7 +119,9 @@ def rivers_by_station_number(stations, N):
     river_freq_N=[]
     count=0
     for element in river_freq_sort: 
-        if count<N:
+        if N==0:                    #if the requested amount of rivers is 0 it should return an empty list
+            break
+        elif count<N:
             river_freq_N.append(element)  # adds first N tuples to the empty list
         elif river_freq_sort[count][1]==river_freq_sort[N-1][1]:  #adds any more tuples that are monitored by the same number of stations as the Nth river
             river_freq_N.append(element)

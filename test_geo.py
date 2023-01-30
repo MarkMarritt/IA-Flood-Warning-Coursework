@@ -46,7 +46,17 @@ def test_create_stationsRadius():
 def test_rivers_with_station():
      assert rivers_with_station(dataDE)==['Amazon', 'Danube', 'Mississippi', 'Nile', 'Thames']
 def test_stations_by_river():
-    assert stations_by_river(dataDE)=={'Amazon': ['London'], 'Nile': ['Paris'], 'Thames': ['Berlin'], 'Danube': ['Rome'], 'Mississippi': ['New York']}
+    assert stations_by_river(dataDE)=={'Amazon': ['London'], 'Nile': ['Paris'], 'Thames': ['Berlin'], 'Danube': ['Rome','Rome','Rome'], 'Mississippi': ['New York','New York']}
 
 
 #tests for task 1E
+#print(rivers_by_station_number(dataDE,6))
+def test_rivers_by_station_number():
+    assert rivers_by_station_number(dataDE,0)==[]
+    assert rivers_by_station_number(dataDE,1)==[('Danube', 3)]
+    assert rivers_by_station_number(dataDE,2)==[('Danube', 3), ('Mississippi', 2)]
+    assert rivers_by_station_number(dataDE,3)==[('Danube', 3), ('Mississippi', 2), ('Amazon', 1), ('Nile', 1), ('Thames', 1)]
+    assert rivers_by_station_number(dataDE,4)==[('Danube', 3), ('Mississippi', 2), ('Amazon', 1), ('Nile', 1), ('Thames', 1)]
+    assert rivers_by_station_number(dataDE,5)==[('Danube', 3), ('Mississippi', 2), ('Amazon', 1), ('Nile', 1), ('Thames', 1)]
+    assert rivers_by_station_number(dataDE,6)==[('Danube', 3), ('Mississippi', 2), ('Amazon', 1), ('Nile', 1), ('Thames', 1)]
+
