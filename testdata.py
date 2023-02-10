@@ -1,6 +1,6 @@
 # use this data for your tests if you want
 # PLEASE CHANGE FLOW RATE AND URLS IF YOU NEED TO 
-
+from datetime import datetime 
 from floodsystem.station import MonitoringStation
 
 
@@ -127,7 +127,24 @@ data = [place1,place2,place3,place4,place5]
 dataDE=[place7,place8,place9,place10,place11,place12,place13,place11,place10,place10]
 data1F = [place1,place2,place3,place4,place5,place6]
 
+# data for test_plot
+waterLevel10 = [1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0]
+badWaterLevel10 = [1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,"ten"]
+dates10 = [datetime(2017, 1, 1), datetime(2017, 1, 2), datetime(2017, 1, 3),
+     datetime(2017, 1, 4), datetime(2017, 1, 5), datetime(2017, 1, 6),
+     datetime(2017, 1, 7), datetime(2017, 1, 8), datetime(2017, 1, 9),
+     datetime(2017, 1, 10)]
+dates11 = [datetime(2016, 12, 30), datetime(2016, 12, 31), datetime(2017, 1, 1),
+     datetime(2017, 1, 2), datetime(2017, 1, 3), datetime(2017, 1, 4),
+     datetime(2017, 1, 5), datetime(2017, 1, 6), datetime(2017, 1, 7),
+     datetime(2017, 1, 8), datetime(2017, 1, 9)]
+baddates10 = [datetime(2016, 12, 30), datetime(2016, 12, 31), datetime(2017, 1, 1),
+     datetime(2017, 1, 2), (2017, 1, 3), datetime(2017, 1, 4),
+     datetime(2017, 1, 5), datetime(2017, 1, 6), datetime(2017, 1, 7),
+     datetime(2017, 1, 8)]
 
-
-
-
+# data for test_analysis
+yconstant = [1,1,1,1,1,1,1,1,1,1]
+ylinear = [0,1,2,3,4,5,6,7,8,9]
+yquadratic = [0,1,4,9,16,25,36,49,64,81]
+ybad = [0,1,2]
