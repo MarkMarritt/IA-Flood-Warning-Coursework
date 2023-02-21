@@ -2,9 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 """This module provides a model for a monitoring station, and tools
-for manipulating/modifying station data
-
-"""
+for manipulating/modifying station data"""
 
 
 class MonitoringStation:
@@ -47,6 +45,19 @@ class MonitoringStation:
             return False
         else:
             return True
+    
+    def relative_water_level(self):
+        """Method that returns the latest water level as a fraction of the typical range"""
+        # Check for inconsistency of typical range data - return None if inconsistent
+        if MonitoringStation.typical_range_consistent(self) == False or self.latest_level == None:
+            water_level_fraction = None
+        # Calculate latest level as fraction of typical range
+        # Fraction = 1 if latest level = typical high
+        # Fraction = 0 if latest level = typical low
+        elif MonitoringStation.typical_range_consistent(self) == True:
+            range = self.typical_range[1] - self.typical_range[0]
+            water_level_fraction = (self.latest_level - self.typical_range[0])/range
+        return water_level_fraction
 
 # Creating list of stations with inconsistent typical range data
 def inconsistent_typical_range_stations(stations):
