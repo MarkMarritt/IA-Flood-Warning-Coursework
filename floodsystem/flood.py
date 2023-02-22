@@ -15,7 +15,7 @@ def stations_level_over_threshold(stations, tol):
             pass
         else:
             if water_level_fraction >= tol:
-                level_over_threshold = (station.name, water_level_fraction)
+                level_over_threshold = (station, water_level_fraction)
                 level_over_threshold_names.append(level_over_threshold)
     # Sort by descending order of relative water levels
     level_over_threshold_names.sort(reverse = True, key=lambda x: x[1])
@@ -31,7 +31,7 @@ def stations_highest_rel_level(stations, N):
         if water_level_fraction == None:
             pass
         else:
-            rel_level = (station.name, water_level_fraction)
+            rel_level = (station, water_level_fraction)
             rel_level_list.append(rel_level)
     # Sort by descending order of relative water levels
     rel_level_list.sort(reverse = True, key = lambda x: x[1])
@@ -39,6 +39,6 @@ def stations_highest_rel_level(stations, N):
     highest_rel_level = rel_level_list[0:N]
     for tupple in highest_rel_level:
         for station in stations:
-            if tupple[0] == station.name:
+            if tupple[0] == station:
                 highest_rel_level_stations.append(station)
     return highest_rel_level_stations
