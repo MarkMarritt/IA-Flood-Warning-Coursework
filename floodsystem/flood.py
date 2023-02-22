@@ -24,6 +24,7 @@ def stations_level_over_threshold(stations, tol):
 def stations_highest_rel_level(stations, N):
     """Create list of N stations with highest relative water level"""
     rel_level_list = []
+    highest_rel_level_stations = []
     # Create a list of all stations and their relative water levels (list of tupples)
     for station in stations:
         water_level_fraction = MonitoringStation.relative_water_level(station)
@@ -36,4 +37,8 @@ def stations_highest_rel_level(stations, N):
     rel_level_list.sort(reverse = True, key = lambda x: x[1])
     # Take first N tupples and create a list of only the station names
     highest_rel_level = rel_level_list[0:N]
-    return highest_rel_level
+    for tupple in highest_rel_level:
+        for station in stations:
+            if tupple[0] == station.name:
+                highest_rel_level_stations.append(station)
+    return highest_rel_level_stations
