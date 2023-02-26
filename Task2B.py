@@ -12,8 +12,10 @@ def run():
     # Print all names and relative water levels of stations with relative water 
     # levels greater than 0.8
     level_over_threshold_names = stations_level_over_threshold(stations, 0.8)
-    for station in level_over_threshold_names:
-        print(station[0], station[1])
+    for tupple in level_over_threshold_names:
+        for station in stations:
+            if tupple[0] == station:
+                print(station.name, tupple[1])
 
 if __name__ == "__main__":
     print("*** Task 2B: CUED Part IA Flood Warning System ***")
