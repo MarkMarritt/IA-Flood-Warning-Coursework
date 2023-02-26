@@ -128,13 +128,23 @@ def fetch_measure_levels(measure_id, dt):
     data = fetch(url)
 
     # Extract dates and levels
-    dates, levels = [], []
+    dates, datesValid, levels = [], [], []
+    
     for measure in data['items']:
+        # Convert date-time string to a datetime object
+        d = dateutil.parser.parse(measure['dateTime'])
+        try:
+            levels.append(measure['value'])
+            datesValid.append(d)
+        except:
+            pass
+
+    """for measure in data['items']:
         # Convert date-time string to a datetime object
         d = dateutil.parser.parse(measure['dateTime'])
 
         # Append data
         dates.append(d)
-        levels.append(measure['value'])
+        levels.append(measure['value'])"""
 
-    return dates, levels
+    return datesValid, levels
