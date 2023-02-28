@@ -49,7 +49,7 @@ def plot_water_level_with_fit(station, dates, levels, p, show = True):
     poly, shift = polyfit(dates, levels, p) # get the fitted polynomial
     times, finalTime  = datesToTime(dates, final=True)
     
-    x = np.linspace(0, finalTime, len(times)) # generate a numpy array of length dates, from 0 to the latest time
+    x = np.linspace(finalTime, 0, len(times)) # generate a numpy array of length dates, from 0 to the latest time
     y = poly(x) # puts array through polynomial
     typicalRange = station.typical_range
 
