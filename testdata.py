@@ -13,6 +13,7 @@ place1 = MonitoringStation(
 ("amazon"),
 ("London")
 )
+place1.latest_level = 0.56
 place2 = MonitoringStation( 
 "https//thishyperlinkismadeupsodontuse.com",
 "https//thishyperlinkismadeupsodontuse1.com",
@@ -22,6 +23,7 @@ place2 = MonitoringStation(
 ("nile"),
 ("Paris")
 )
+place2.latest_level = None
 place3 = MonitoringStation( 
 "https//thishyperlinkismadeupsodontuse.com",
 "https//thishyperlinkismadeupsodontuse1.com",
@@ -31,6 +33,7 @@ place3 = MonitoringStation(
 ("Thames"),
 ("Berlin")
 )
+place3.latest_level = 0.03
 place4 = MonitoringStation( 
 "https//thishyperlinkismadeupsodontuse.com",
 "https//thishyperlinkismadeupsodontuse1.com",
@@ -40,6 +43,7 @@ place4 = MonitoringStation(
 ("danube"),
 ("Rome")
 )
+place4.latest_level = 2.99
 place5 = MonitoringStation( 
 "https//thishyperlinkismadeupsodontuse.com",
 "https//thishyperlinkismadeupsodontuse1.com",
@@ -49,6 +53,7 @@ place5 = MonitoringStation(
 ("Thames"),
 ("New York")
 )
+place5.latest_level = 1.1
 place6 = MonitoringStation( 
 "https//thishyperlinkismadeupsodontuse.com",
 "https//thishyperlinkismadeupsodontuse1.com",
@@ -67,6 +72,7 @@ place7 = MonitoringStation(
 ("Amazon"),
 ("London")
 )
+place7.latest_level = 1.12
 place8 = MonitoringStation( 
 "https//thishyperlinkismadeupsodontuse.com",
 "https//thishyperlinkismadeupsodontuse1.com",
@@ -76,6 +82,7 @@ place8 = MonitoringStation(
 ("Nile"),
 ("Paris")
 )
+place8.latest_level = 4.0
 place9 = MonitoringStation( 
 "https//thishyperlinkismadeupsodontuse.com",
 "https//thishyperlinkismadeupsodontuse1.com",
@@ -126,6 +133,7 @@ place13= MonitoringStation(
 data = [place1,place2,place3,place4,place5]
 dataDE=[place7,place8,place9,place10,place11,place12,place13,place11,place10,place10]
 data1F = [place1,place2,place3,place4,place5,place6]
+data2BC = [place1, place2, place3, place4, place5, place7, place8]
 
 # data for test_plot
 waterLevel10 = [1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0]
