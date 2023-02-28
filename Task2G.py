@@ -12,7 +12,6 @@ import copy
 
 def run(p,h,n):
     stations = build_station_list()
-    print(len(stations))
     update_water_levels(stations)
     highFlowStations = stations_highest_rel_level(stations, n) #gets stations with current largest relative flow
     # its not practical to find the predicted rel flow of all stations as there are 2000 and it takes to find predicted rel flow for each station
