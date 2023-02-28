@@ -13,7 +13,7 @@ def run():
     for station in highFlowStations:
         Dates, Levels = fetch_measure_levels(station.measure_id, datetime.timedelta(days = 10)) # fetches the levels for the station from past 10 days
 
-        plot_water_levels(station, Dates, Levels, show= False)
+        plot_water_levels(station, Dates, Levels, show= True)
     
 
 if __name__ == "__main__":

@@ -22,7 +22,7 @@ def plot_water_levels(station, dates, levels, show = True ):
         else:
             raise TypeError("The dates are not all of correct type")
     if len(dates) != len(levels):
-        raise ValueError("The lengths of the two strings are not the same")
+        raise ValueError("The lengths of the two lists are not the same")
     else:
         pass
     
@@ -54,8 +54,6 @@ def plot_water_level_with_fit(station, dates, levels, p, show = True):
     typicalRange = station.typical_range
 
     plt.plot(dates, y, label = "fitted", color = "green") # plot the fitted data on the same graph
-    plt.axhline(typicalRange[0], label = "Typical range low",  color = "pink")
-    plt.axhline(typicalRange[1], label = "Typical range high", color = "purple")
     plt.title(station.name)
     plt.xlabel("dates")
     plt.xticks(rotation = 45)
